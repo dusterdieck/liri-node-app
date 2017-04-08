@@ -1,10 +1,10 @@
 //importing the various node packages required for this app
 let fs = require('fs');
 
-//setting the user command to a variable, or to a string if no arguments are included
+//setting the user command to a variable, or to a string if no arguments are included for prettier log
 let userCmd = process.argv[2] || 'No arguments passed.';
 
-//similarly, setting anything after the command argument to a search term, or to a blank string if nothing is provided
+//similarly, setting anything after the command argument to a search term, or to a blank string if nothing is provided for prettier log
 let searchTerm = process.argv[3] || '';
 
 //turning that potential array into a string
@@ -54,10 +54,10 @@ function songSpotify( searchTerm ){
 	//importing the various node packages required for this function
 	let spotify = require('spotify');
 	//if nothing is entered for a searchTerm, it sets a default
-	if( searchTerm == ''){
-		searchTerm = 'The Sign Ace of Base';
-	}
-
+	// if( searchTerm == ''){
+	// 	searchTerm = 'The Sign Ace of Base';
+	// }
+	searchTerm = searchTerm || 'The Sign Ace of Base';
 	//spotify API call
 	spotify.search({ type: 'track', query: searchTerm }, function(err, data) {
 	    if ( err ) { //error handling
@@ -102,9 +102,10 @@ function getTweets(){
 function movieLookup( searchTerm ){
 	//importing the various node packages required for this function
 	let request = require('request');
-	if( searchTerm == ''){
-		searchTerm = 'Mr. Nobody';
-	}
+	// if( searchTerm == ''){
+	// 	searchTerm = 'Mr. Nobody';
+	// }
+	searchTerm = searchTerm || 'Mr. Nobody';
 	//build the queryURL
 	var queryURL = "http://www.omdbapi.com/?t=" + searchTerm + "&y=&plot=short&r=json"; 
 	//run the request with the above queryURL
