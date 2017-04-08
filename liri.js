@@ -54,10 +54,9 @@ function songSpotify( searchTerm ){
 	//importing the various node packages required for this function
 	let spotify = require('spotify');
 	//if nothing is entered for a searchTerm, it sets a default
-	// if( searchTerm == ''){
-	// 	searchTerm = 'The Sign Ace of Base';
-	// }
-	searchTerm = searchTerm || 'The Sign Ace of Base';
+	if( searchTerm == ''){
+		searchTerm = 'The Sign Ace of Base';
+	}
 	//spotify API call
 	spotify.search({ type: 'track', query: searchTerm }, function(err, data) {
 	    if ( err ) { //error handling
@@ -102,10 +101,10 @@ function getTweets(){
 function movieLookup( searchTerm ){
 	//importing the various node packages required for this function
 	let request = require('request');
-	// if( searchTerm == ''){
-	// 	searchTerm = 'Mr. Nobody';
-	// }
-	searchTerm = searchTerm || 'Mr. Nobody';
+	//if nothing is entered for a searchTerm, it sets a default
+	if( searchTerm == ''){
+		searchTerm = 'Mr. Nobody';
+	}
 	//build the queryURL
 	var queryURL = "http://www.omdbapi.com/?t=" + searchTerm + "&y=&plot=short&r=json"; 
 	//run the request with the above queryURL
